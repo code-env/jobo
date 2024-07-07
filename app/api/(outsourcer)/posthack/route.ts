@@ -47,3 +47,18 @@ export async function POST(req: Request) {
     return new NextResponse("internal server error", { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  try {
+    const allHacks = await db.postHack.findMany();
+
+    if (!allHacks) {
+      return new NextResponse("No hacks found", { status: 404 });
+    }
+
+    return new NextResponse(JSON.stringify(allHacks), { status: 200 });
+  } catch (error: any) {
+    console.log(error.message);
+    return new NextResponse("Internal Server error", { status: 500 });
+  }
+}
