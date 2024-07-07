@@ -49,7 +49,7 @@ export async function PUT(req: Request, { params }: { params: Params }) {
     const { userId } = auth();
     const body = await req.json();
 
-    const newBody = { ...body, age: parseInt(body.age) };
+    const newBody = { ...body };
 
     if (!userId) {
       return new NextResponse("Unauthorized!", {
