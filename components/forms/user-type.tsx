@@ -1,69 +1,47 @@
 "use client";
 
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import { FormEvent, useState } from "react";
+import { Button } from "../ui/button";
+import { Loading } from "../shared/loading";
+import { UserType } from "@prisma/client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { createProjectSchema } from "@/validations";
-import { useState } from "react";
+const userRoles: UserType[] = ["USER", "ADMIN", "OUTSOURCER"];
 
-const CreateNewProject = ({ userId }: { userId: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const form = useForm<z.infer<typeof createProjectSchema>>({
-    resolver: zodResolver(createProjectSchema),
-  });
+const SelectUserType = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [userType, setUserType] = useState<UserType>("USER");
 
-  async function onSubmit(data: z.infer<typeof createProjectSchema>) {
-    console.log("something is going on");
-  }
+  const handleChangeUserType = (event: FormEvent) => {
+    event.preventDefault();
 
-  const {
-    formState: { isSubmitting },
-  } = form;
+    try {
+      setIsLoading(true);
+      if (!userType) throw new Error("Select user Type");
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button variant="zbtn" className="w-fit">
-          Create new Project
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Create new Project</DialogTitle>
-          <DialogDescription>
-            Start a new project that&apos;s sync to your terminal
-          </DialogDescription>
-        </DialogHeader>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="grid gap-4 py-4"
-          ></form>
-        </Form>
-      </DialogContent>
-    </Dialog>
+    <form className="flex items-center" onSubmit={handleChangeUserType}>
+      {userRoles.map((role, index) => (
+        <p key={index} onClick={() => setUserType(role)}>
+          {role}
+        </p>
+      ))}
+
+      <Button>
+        {isLoading ? (
+          <>
+            <Loading /> <span>loading</span>
+          </>
+        ) : (
+          "Change role"
+        )}
+      </Button>
+    </form>
   );
 };
 
-export default CreateNewProject;
+export default SelectUserType;
