@@ -14,9 +14,11 @@ const UserType = async () => {
 
   if (!user) return;
 
-  if (user.type) return redirect("/skills");
+  if (user.type === "USER") return <SelectUserType />;
 
-  return <SelectUserType />;
+  if (user.type === "ADMIN") return;
+
+  if (user.type === "OUTSOURCER") return redirect("/d");
 };
 
 export default UserType;
