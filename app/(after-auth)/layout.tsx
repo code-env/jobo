@@ -1,4 +1,4 @@
-import { useUser } from "@/hooks/user-user";
+import { useUser } from "@/hooks/use-user";
 import React, { ReactNode } from "react";
 
 const AfterAuthLayout = async ({ children }: { children: ReactNode }) => {
