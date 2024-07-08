@@ -43,7 +43,7 @@ const Conversations = () => {
               // href={`/inbox/${conversation.path}`}
               onClick={() => handleChangeChat(conversation.path)}
               className={cn(
-                "text-sm py-3 px-6 hover:bg-foreground slowmo relative flex items-center gap-2 cursor-pointer",
+                "text-sm py-3 px-6 hover:bg-black/5 slowmo relative flex items-center gap-2 cursor-pointer",
                 {
                   "bg-foreground before:h-full before:w-1 before:left-0 before:top-0 before:bg-background before:absolute":
                     isActive,

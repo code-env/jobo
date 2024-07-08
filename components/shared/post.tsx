@@ -36,6 +36,8 @@ const Post = ({ content }: { content: ShowCasePost }) => {
           </span>
         </p>
 
+        <h2 className="font-semibold text-3xl">{content.title}</h2>
+
         <p className="mt-2 line-clamp-3 mb-2">{content.description}</p>
 
         <div className="flex w-full relative ">

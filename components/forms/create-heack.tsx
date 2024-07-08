@@ -23,7 +23,7 @@ import FileUpload from "../shared/file-upload";
 import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
 
-const CreateShow = () => {
+const CreateShow = ({ setIsOpen }: { setIsOpen: (thing: boolean) => void }) => {
   const router = useRouter();
   const form = useForm<z.infer<typeof createHack>>({
     resolver: zodResolver(createHack),
@@ -42,6 +42,7 @@ const CreateShow = () => {
       const { data } = await axios.post("/api/user/showcase", dataTobeSent);
 
       if (data) {
+        setIsOpen(false);
         revalidatePath("/scroll");
       }
 
