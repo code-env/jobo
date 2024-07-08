@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const PostSkeleton = () => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 page">
       <Skeleton className="w-12 h-12 min-w-12 rounded-full" />
       <div className="flex-1 mt-1 flex flex-col gap-2">
         <Skeleton className="w-36 h-2 min-w-10" />

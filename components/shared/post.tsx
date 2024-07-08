@@ -1,11 +1,18 @@
 import { cn } from "@/lib/utils";
-import { ShowCasePost, User } from "@prisma/client";
+import { Comments, Likes, ShowCasePost, User } from "@prisma/client";
 import axios from "axios";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
+import { ArrowBigUp, MessageSquareText } from "lucide-react";
+import { revalidatePath } from "next/cache";
 
 const Post = ({ content }: { content: ShowCasePost }) => {
+  const [text, setText] = useState("");
+  const [likes, setLikes] = useState<Likes[] | null>(null);
+  const [comments, setComments] = useState<Comments[] | null>(null);
+  const [isLoading, setisLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isCommment, setIsComment] = useState(false);
   const [isTrue, setIsTrue] = useState(false);
   useEffect(() => {
     const getUser = async () => {
@@ -17,10 +24,67 @@ const Post = ({ content }: { content: ShowCasePost }) => {
     getUser();
   }, []);
 
+  useEffect(() => {
+    const comments = async () => {
+      const { data } = await axios.get(
+        `/api/user/showcase/${content.id}/comments`
+      );
+
+      setComments(data);
+    };
+
+    comments();
+  }, []);
+
+  const handleSubmitComments = async (event: FormEvent) => {
+    event.preventDefault();
+    try {
+      setisLoading(true);
+
+      const { data } = await axios.post(
+        `/api/user/showcase/${content.id}/comments`,
+        { message: text }
+      );
+
+      setComments([...(comments as Comments[]), data]);
+
+      setText("");
+      setIsComment(false);
+
+      revalidatePath("/");
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setisLoading(false);
+    }
+  };
+
+  const handleLikePost = async (event: FormEvent) => {
+    event.preventDefault();
+    try {
+      setisLoading(true);
+      setisLoading(true);
+
+      const { data } = await axios.post(
+        `/api/user/showcase/${content.id}/likes`
+      );
+
+      setLikes([...(likes as Likes[]), data]);
+
+      // (false);
+
+      revalidatePath("/");
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setisLoading(false);
+    }
+  };
+
   if (!user) return;
 
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 border-border border-b page">
       <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
         <Image
           fill
@@ -70,6 +134,52 @@ const Post = ({ content }: { content: ShowCasePost }) => {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-5 ">
+          <div className="flex gap-10">
+            <button
+              onClick={() => setIsComment(!isCommment)}
+              className="bg-black/5 rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
+            >
+              <MessageSquareText className="w-4 h-4 x" />{" "}
+              <span className="text-sm">{comments?.length}</span>
+            </button>
+            <button
+              onClick={handleLikePost}
+              className="bg-black/5 rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
+            >
+              <ArrowBigUp className="w-4 h-4 " />{" "}
+              <span className="text-sm">{content.likescount}</span>
+            </button>
+          </div>
+          {isCommment && (
+            <form
+              className="mt-5 flex items-center gap-3"
+              onSubmit={handleSubmitComments}
+            >
+              <input
+                placeholder="Comment here..."
+                className={cn(
+                  "h-10 w-full border border-border rounded-lg outline-none px-5",
+                  {
+                    "opacity-50 cursor-not-allowed": isLoading,
+                  }
+                )}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <button
+                className={cn(
+                  "bg-primary px-3 py-1.5 text-white rounded-lg font-semibold capitalize",
+                  {
+                    "opacity-50 cursor-not-allowed": isLoading,
+                  }
+                )}
+              >
+                send
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </div>
