@@ -29,3 +29,12 @@ export const feedbackSchema = z.object({
     .string()
     .min(2, { message: "Description must be at least 2 characters." }),
 });
+
+export const createHack = z.object({
+  title: z.string().min(2, { message: "Title must be at least 2 characters." }),
+  description: z
+    .string()
+    .min(2, { message: "Description must be at least 2 characters." }),
+  githubUrl: z.optional(z.string()),
+  deployedUrl: z.optional(z.string()),
+});

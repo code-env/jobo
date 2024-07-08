@@ -30,6 +30,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { redirect } from "next/navigation";
 import { Loading } from "../shared/loading";
+import CreateShow from "../forms/create-heack";
 
 const CreateNewHack = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,74 +53,14 @@ const CreateNewHack = () => {
           Create new article
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] lg:max-w-3xl">
         <DialogHeader>
           <DialogTitle>Create new article</DialogTitle>
           <DialogDescription>
             Start a new article that&apos;s sync to your terminal
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="grid gap-4 py-4"
-          >
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Title</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Why i quite my 9-5 job"
-                      {...field}
-                      disabled={isSubmitting}
-                      className="disabled:opacity-50 disabled:cursor-not-allowed"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="My boss got on my nerves..."
-                      {...field}
-                      disabled={isSubmitting}
-                      className="disabled:opacity-50 disabled:cursor-not-allowed"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <DialogFooter>
-              <Button
-                type="submit"
-                variant="zbtn"
-                className="w-fit"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loading />
-                    <span className="ml-3"> Creating...</span>
-                  </>
-                ) : (
-                  "Create new article"
-                )}
-              </Button>
-            </DialogFooter>
-          </form>
-        </Form>
+        <CreateShow />
       </DialogContent>
     </Dialog>
   );
