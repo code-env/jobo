@@ -17,6 +17,7 @@ enum UserType {
   ADMIN
   USER
   OUTSOURCER
+  NONE
 }
 
 enum PostType {
