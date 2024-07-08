@@ -120,6 +120,7 @@ model ShowCasePost {
   images      String[]
   deployedUrl String
   githubUrl   String
+  likescount  Int        @default(0)
   Comments    Comments[]
   likes       Likes[]
 
