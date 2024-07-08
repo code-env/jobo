@@ -7,7 +7,7 @@ import Logo from "@/components/shared/logo";
 
 export default function Component() {
   return (
-    <div className="flex flex-col min-h-[100dvh]">
+    <div className="flex flex-col min-h-[100dvh] max-w-7xl mx-auto w-full">
       <header className="bg-white text px-4 lg:px-6 py-4 flex items-center justify-between">
         <Logo href="#" />
         <nav className="hidden lg:flex gap-4">
