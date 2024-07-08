@@ -34,7 +34,7 @@ const UserSkills = () => {
 
       const data: User = await res.data;
 
-      if (data.type === "USER") router.push("/d");
+      if (data.type === "USER") router.push("/scroll");
     } catch (error: any) {
       console.log(error.message);
     } finally {

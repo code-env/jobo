@@ -15,9 +15,9 @@ const SkillsPage = async () => {
 
   if (user.skills.length === 0 && user.type === "USER") return <UserSkills />;
 
-  if (user.type === "ADMIN") return redirect("/d");
+  if (user.type === "ADMIN") return redirect("/scroll");
 
-  return redirect("/d");
+  return redirect("/scroll");
 };
 
 export default SkillsPage;
