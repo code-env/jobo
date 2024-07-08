@@ -4,10 +4,7 @@ import Link from "next/link";
 
 const Logo = ({ href }: { href: string }) => {
   return (
-    <Link
-      href={href}
-      className="hidden md:flex items-center gap-x-2 font-semibold"
-    >
+    <Link href={href} className="flex items-center gap-x-2 font-semibold">
       <Image
         src="/logo-black.png"
         height="30"

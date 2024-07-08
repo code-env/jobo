@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   description: "all your events in one place ",
   icons: {
     icon: [
-      { url: "/notpadd-light.png", media: "(prefers-color-scheme: dark)" },
-      { url: "/notpadd-dark.png", media: "(prefers-color-scheme: light)" },
+      { url: "/logo-white.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/logo-black.png", media: "(prefers-color-scheme: light)" },
     ],
   },
 };
