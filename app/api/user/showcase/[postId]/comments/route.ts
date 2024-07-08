@@ -9,6 +9,8 @@ export async function POST(
   { params }: { params: { postId: string } }
 ) {
   try {
+    // console.log(params);
+
     const { message } = await req.json();
 
     const user = await currentUser();
@@ -30,10 +32,9 @@ export async function POST(
     const showcaseData = await db.showCasePost.findUnique({
       where: {
         id: params.postId,
-        userId: userdata.id,
-      },
-      include: {
-        user: true,
+
+        //damn man tu veut me tuer comme ca?
+        // userId: userdata.id, d
       },
     });
 
