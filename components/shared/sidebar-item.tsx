@@ -18,11 +18,14 @@ const SideItem = ({
   return (
     <Link
       href={path}
-      className={cn("flex-center gap-2 py-2 group text-background/80", {
-        "text-background font-semibold": isActive,
+      className={cn("flex items-center capitalize gap-2 py-2 group ", {
+        "font-semibold": isActive,
       })}
     >
-      <Icon /> <span className="group-hover:pl-2 slowmo">{name}</span>
+      <Icon />{" "}
+      <span className="group-hover:pl-2 transition-all duration-150">
+        {name}
+      </span>
     </Link>
   );
 };

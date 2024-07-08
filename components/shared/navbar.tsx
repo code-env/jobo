@@ -14,7 +14,11 @@ const Navbar = () => {
   const pathname = usePathname();
   const [user, setUser] = useState<UserProfile | null | undefined>();
 
-  return <header>Navbar</header>;
+  return (
+    <header className="h-14 border-b border-border items-center flex px-4">
+      Navbar
+    </header>
+  );
 };
 
 export default Navbar;

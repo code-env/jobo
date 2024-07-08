@@ -13,39 +13,29 @@ const Sidebar = ({ user }: { user: User }) => {
 
   const date = new Date().getFullYear();
   return (
-    <aside className="lg:border-r pr-4 max-w-[211px] w-full flex-between flex-col pb-4 hidden lg:flex pl-4 2xl:pl-0 h-screen sticky top-0">
+    <aside className="lg:border-r max-w-[211px] w-full flex-between flex-col pb-4 hidden lg:flex 2xl:pl-0 h-screen sticky top-0">
       <div className="flex flex-1 flex-col gap-16">
-        <div className="h-[56px] flex  items-center">
+        <div className="h-[56px] flex  items-center border-b border-border">
           <Logo />
         </div>
-        <ul>
-          {routes
-            .filter((route) => {
-              return (
-                !(user.type === "ADMIN" && ["/contact"].includes(route.path)) &&
-                !(user.type !== "ADMIN" && ["/manage"].includes(route.path))
-              );
-            })
-            .map((route, index) => {
-              const href =
-                user.type === "ADMIN" && index === 0 ? "/panel" : route.path;
-              const isActive = pathname.startsWith(href);
+        <ul className="px-4">
+          {routes.map((route) => {
+            const isActive = pathname === route.path;
 
-              return (
-                <SideItem
-                  name={route.name}
-                  iconImage={route.icon}
-                  path={href}
-                  isActive={isActive}
-                  key={href}
-                />
-              );
-            })}
+            return (
+              <SideItem
+                key={route.name}
+                isActive={isActive}
+                name={route.name}
+                path={route.path}
+                iconImage={route.icon}
+              />
+            );
+          })}
         </ul>
       </div>
-
       <p>
-        &copy; <span>TiC Summit {date}</span>
+        &copy; <span>Jobo {date}</span>
       </p>
     </aside>
   );

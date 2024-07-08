@@ -1,13 +1,4 @@
-import {
-  BoxIcon,
-  FolderKanbanIcon,
-  HelpCircle,
-  ShieldQuestion,
-  Tent,
-  TicketCheckIcon,
-  Tornado,
-  Users,
-} from "lucide-react";
+import { Tent, TicketCheckIcon, Tornado, Users } from "lucide-react";
 import { useMemo } from "react";
 
 export const softwareEngineerSkills = [
@@ -35,44 +26,24 @@ export const sidebarRoutes = () => {
   const routes = useMemo(
     () => [
       {
-        name: "Dashboard",
-        path: "/",
+        name: "scroll",
+        path: "/scroll",
         icon: Tent,
       },
       {
-        name: "Stages",
-        path: "/stages",
+        name: "showcase",
+        path: "/showcase",
         icon: Tornado,
       },
       {
-        name: "Teams",
-        path: "/teams",
+        name: "inbox",
+        path: "/inbox",
         icon: Users,
       },
       {
-        name: "Submitted",
-        path: "/pendingteams",
+        name: "search",
+        path: "/search",
         icon: TicketCheckIcon,
-      },
-      {
-        name: "Manage",
-        path: "/manage",
-        icon: FolderKanbanIcon,
-      },
-      {
-        name: "Registration Fee",
-        path: "/pay_registration_fee",
-        icon: BoxIcon,
-      },
-      {
-        name: "Contact",
-        path: "/contact",
-        icon: ShieldQuestion,
-      },
-      {
-        name: "Faq",
-        path: "/faq",
-        icon: HelpCircle,
       },
     ],
     []
