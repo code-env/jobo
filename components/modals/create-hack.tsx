@@ -10,26 +10,13 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { createProjectSchema } from "@/validations";
 import { Textarea } from "@/components/ui/textarea";
-// import { createNewNote } from "@/actions/note";
 import { useState } from "react";
-import { redirect } from "next/navigation";
-import { Loading } from "../shared/loading";
 import CreateShow from "../forms/create-heack";
 
 const CreateNewHack = () => {
@@ -50,14 +37,15 @@ const CreateNewHack = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="zbtn" className="w-fit">
-          Create new article
+          Post
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] lg:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Create new article</DialogTitle>
+          <DialogTitle>What have you worked on today?</DialogTitle>
           <DialogDescription>
-            Start a new article that&apos;s sync to your terminal
+            YOu&apos;re about to showcase to the world what you&apos;ve done
+            today!
           </DialogDescription>
         </DialogHeader>
         <CreateShow />
