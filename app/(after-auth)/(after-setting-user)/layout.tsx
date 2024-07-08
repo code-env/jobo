@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/navbar";
 import Sidebar from "@/components/shared/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useUser } from "@/hooks/use-user";
+import QueryProvider from "@/providers/query";
 import React, { ReactNode } from "react";
 
 const AfterAuthLayout = async ({ children }: { children: ReactNode }) => {
@@ -21,7 +22,7 @@ const AfterAuthLayout = async ({ children }: { children: ReactNode }) => {
         {/* <Mobileheadernav /> */}
         <main className="children">
           <ScrollArea className="w-full h-full page relative p-4">
-            {children}
+            <QueryProvider>{children}</QueryProvider>
           </ScrollArea>
         </main>
       </div>

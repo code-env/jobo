@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       return new NextResponse("unauthorized", { status: 400 });
     }
 
-    if (isUserOutsourcer.type != UserType.OUTSOURCER) {
+    if (isUserOutsourcer.type !== UserType.OUTSOURCER) {
       return new NextResponse(
         "Sorry you are not an outsroucer. Not authorized",
         { status: 404 }
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     });
 
     if (!createhack) {
-      return new NextResponse("No hack created", { status: 404 });
+      return new NextResponse("No hack created", { status: 401 });
     }
 
     return new NextResponse(JSON.stringify(createhack), { status: 200 });

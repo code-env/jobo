@@ -27,6 +27,7 @@ const SelectUserType = () => {
       const data: User = await res.data;
 
       if (data.type === "USER") router.push("/skills");
+      if (data.type === "OUTSOURCER") router.push("/scroll");
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -36,7 +37,7 @@ const SelectUserType = () => {
 
   return (
     <form
-      className="flex items-center flex-col gap-10 border border-border p-10 rounded-lg transition-all duration-300"
+      className="flex items-center flex-col max-w-xl gap-10 border border-border p-10 rounded-lg transition-all duration-300"
       onSubmit={handleChangeUserType}
     >
       <p className="font-semibold text-3xl">Who are you?</p>
@@ -58,7 +59,7 @@ const SelectUserType = () => {
       </div>
 
       {userType === "OUTSOURCER" && (
-        <p>
+        <p className="text-center">
           This means you&apos;re just a company or someone wanting to offer
           opportunities
         </p>
@@ -67,7 +68,7 @@ const SelectUserType = () => {
       <Button variant="zbtn">
         {isLoading ? (
           <>
-            <Loading /> <span className="ml-2">Continuing</span>
+            <Loading /> <span className="ml-2 ">Continuing</span>
           </>
         ) : (
           "Next"

@@ -93,8 +93,8 @@ export default function Component() {
               <span className="text-primary">Techcellence</span>
             </h1>
             <p className="max-w-[600px] mx-auto text-lg md:text-xl">
-              Jobo connects you with diverse freelance opportunities that fit
-              your schedule and skills.
+              Jobo empowers cameroonians through innovative software solution
+              tailored ror their unique needs.
             </p>
             <div>
               <Button size="lg">Find Work</Button>

@@ -1,3 +1,5 @@
+import OutsourcerDash from "@/components/outsourcer/dasboard";
+import UserDash from "@/components/user/user-dash";
 import { useUser } from "@/hooks/use-user";
 import { Metadata } from "next";
 import React from "react";
@@ -11,9 +13,9 @@ const Dasboard = async () => {
 
   if (!user) return;
 
-  if (user.type === "USER") return <div>Dasboard</div>;
+  if (user.type === "USER") return <UserDash />;
 
-  if (user.type === "OUTSOURCER") return <div>outsourcers</div>;
+  if (user.type === "OUTSOURCER") return <OutsourcerDash user={user} />;
 };
 
 export default Dasboard;

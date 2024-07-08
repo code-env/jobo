@@ -54,7 +54,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={satoshi.className}>
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen ">{children}</main>
         </body>
       </html>
     </ClerkProvider>
