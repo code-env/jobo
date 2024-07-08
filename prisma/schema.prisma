@@ -32,19 +32,20 @@ enum PostType {
 }
 
 model User {
-  id           String         @id @default(auto()) @map("_id") @db.ObjectId
-  email        String         @unique
-  username     String?
-  firstName    String?
-  lastName     String?
-  skills       String[]
-  clerkId      String         @unique
-  type         UserType       @default(USER)
-  POST         PostHack[]
-  ShowCasePost ShowCasePost[]
-  Comments     Comments[]
-  connect      Connects[]
-  submittions  Submittions[]
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  email          String         @unique
+  username       String?
+  firstName      String?
+  lastName       String?
+  skills         String[]
+  clerkId        String         @unique
+  profilePicture String?
+  type           UserType       @default(USER)
+  POST           PostHack[]
+  ShowCasePost   ShowCasePost[]
+  Comments       Comments[]
+  connect        Connects[]
+  submittions    Submittions[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
