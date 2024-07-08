@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl = "https://live.fapshi.com";
 
 const headers = {
-  "tyep":"typer"
+  tyep: "typer",
   "Content-Type": "application/json",
 };
 const payment = {
