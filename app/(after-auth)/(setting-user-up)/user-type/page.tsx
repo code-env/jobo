@@ -18,6 +18,8 @@ const UserType = async () => {
 
   if (user.type === "ADMIN") return;
 
+  if (user.type === "USER") return redirect("/skill");
+
   if (user.type === "OUTSOURCER") return redirect("/scroll");
 };
 
