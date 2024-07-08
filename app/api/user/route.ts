@@ -45,6 +45,8 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const data = await req.json();
+    console.log(data);
+
     const currentuser = await currentUser();
 
     if (!currentUser) {
