@@ -19,7 +19,7 @@ const Logo = ({ href }: { href: string }) => {
         alt="Logo"
         className="hidden dark:block"
       />
-      <span>Jobo</span>
+      <span>JoBo</span>
     </Link>
   );
 };

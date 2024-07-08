@@ -20,7 +20,7 @@ const AfterAuthLayout = async ({ children }: { children: ReactNode }) => {
         <MobileNav user={user} />
         {/* <Mobileheadernav /> */}
         <main className="children">
-          <ScrollArea className="w-full h-full page relative p-4">
+          <ScrollArea className="w-full h-full relative">
             <QueryProvider>{children}</QueryProvider>
           </ScrollArea>
         </main>
