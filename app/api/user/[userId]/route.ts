@@ -107,12 +107,6 @@ export async function GET(
       where: {
         id: params.userId,
       },
-      select: {
-        id: true,
-        username: true,
-        firstName: true,
-        lastName: true,
-      },
     });
 
     return NextResponse.json(user, { status: 200 });

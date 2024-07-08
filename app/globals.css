@@ -89,10 +89,6 @@
     overflow-x: auto !important;
   }
 
-  div.cl-internal-180wb59 {
-    display: none !important;
-  }
-
   .zoom-range {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -242,4 +238,8 @@ ul {
 
 textarea {
   resize: none;
+}
+
+div.cl-internal-180wb59s {
+  display: none !important;
 }

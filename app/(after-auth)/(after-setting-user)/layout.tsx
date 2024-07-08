@@ -1,4 +1,3 @@
-// import Mobileheadernav from "@/components/shared/mobile-header-nav";
 import Alerts from "@/components/shared/alert";
 import MobileNav from "@/components/shared/mobile-nav";
 import Navbar from "@/components/shared/navbar";
