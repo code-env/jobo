@@ -3,9 +3,10 @@ import axios from "axios";
 const baseUrl = "https://live.fapshi.com";
 
 const headers = {
-  tyep: "typer",
-  "Content-Type": "application/json",
+  apiuser:process.env.apiuser,
+  apikey:  process.env.apikey
 };
+
 const payment = {
   initiatePay(data: { amount: number }) {
     return new Promise(async (resolve) => {
