@@ -15,20 +15,19 @@ const Inbox = async () => {
     return null;
   }
   const userdata = await db.user.findUnique({
-    where:{
-        clerkId:user.id
-    }
-  })
+    where: {
+      clerkId: user.id,
+    },
+  });
 
-  if(!userdata) return 
+  if (!userdata) return;
 
   if (userdata)
-
-  return (
-    <div>
-      <TextMorph params={{ conversationId: user.id }} />
-    </div>
-  );
+    return (
+      <div className="relative">
+        <TextMorph params={{ conversationId: user.id }} />
+      </div>
+    );
 };
 
 export default Inbox;
