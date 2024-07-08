@@ -89,6 +89,10 @@
     overflow-x: auto !important;
   }
 
+  div.cl-internal-180wb59 {
+    display: none !important;
+  }
+
   .zoom-range {
     -webkit-appearance: none;
     -moz-appearance: none;

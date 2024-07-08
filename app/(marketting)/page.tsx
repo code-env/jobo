@@ -89,7 +89,8 @@ export default function Component() {
         <section className="bg-white py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 text-center space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Find Flexible Work on Your Terms
+              Building Bridges to{" "}
+              <span className="text-primary">Techcellence</span>
             </h1>
             <p className="max-w-[600px] mx-auto text-lg md:text-xl">
               Jobo connects you with diverse freelance opportunities that fit
