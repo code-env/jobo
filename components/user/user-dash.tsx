@@ -17,26 +17,25 @@ const UserDash = () => {
     queryFn: getAllHacks,
   });
 
-  if (isLoading)
-    return (
-      <div className="flex flex-col gap-4">
-        {Array.from({ length: 10 }).map((_, index) => (
-          <PostSkeleton key={index} />
-        ))}
-      </div>
-    );
-
-  if (hacks?.length === 0) return <div className="">No hacks!</div>;
-
-  if (isError) return toast.error("something bad happened");
-
   return (
-    <div>
-      {hacks?.map((hack) => (
-        <Post content={hack!} />
+    <div className="flex flex-col gap-4">
+      {Array.from({ length: 10 }).map((_, index) => (
+        <PostSkeleton key={index} />
       ))}
     </div>
   );
+
+  // if (hacks?.length === 0) return <div className="">No hacks!</div>;
+
+  // if (isError) return toast.error("something bad happened");
+
+  // return (
+  //   <div>
+  //     {hacks?.map((hack) => (
+  //       <Post content={hack!} />
+  //     ))}
+  //   </div>
+  // );
 };
 
 export default UserDash;
