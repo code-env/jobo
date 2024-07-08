@@ -16,7 +16,7 @@ const Sidebar = ({ user }: { user: User }) => {
     <aside className="lg:border-r max-w-[211px] w-full flex-between flex-col pb-4 hidden lg:flex 2xl:pl-0 h-screen sticky top-0">
       <div className="flex flex-1 flex-col gap-16">
         <div className="h-[56px] flex  items-center border-b border-border">
-          <Logo />
+          <Logo href="/scroll" />
         </div>
         <ul className="px-4">
           {routes.map((route) => {

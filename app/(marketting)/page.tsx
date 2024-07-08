@@ -3,15 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import Logo from "@/components/shared/logo";
 
 export default function Component() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <header className="bg-primary text-primary-foreground px-4 lg:px-6 py-4 flex items-center justify-between">
-        <Link href="#" className="flex items-center gap-2" prefetch={false}>
-          <BriefcaseIcon className="h-6 w-6" />
-          <span className="text-lg font-bold">Jobo</span>
-        </Link>
+      <header className="bg-white text px-4 lg:px-6 py-4 flex items-center justify-between">
+        <Logo href="#" />
         <nav className="hidden lg:flex gap-4">
           <Link
             href="#"
@@ -42,7 +40,9 @@ export default function Component() {
             Contact
           </Link>
         </nav>
-        <Button className="hidden lg:inline-flex">Sign Up</Button>
+        <Link href="/sign-up" className="hidden lg:inline-flex">
+          Sign Up
+        </Link>
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
@@ -80,13 +80,13 @@ export default function Component() {
               >
                 Contact
               </Link>
-              <Button>Sign Up</Button>
+              <Link href="/sign-up">Sign Up</Link>
             </div>
           </SheetContent>
         </Sheet>
       </header>
       <main className="flex-1">
-        <section className="bg-primary text-primary-foreground py-12 md:py-24 lg:py-32">
+        <section className="bg-white py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 text-center space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Find Flexible Work on Your Terms
@@ -203,99 +203,107 @@ export default function Component() {
         <div className="container grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-2">
             <h4 className="font-bold">Jobo</h4>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              About
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Careers
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Press
-            </Link>
+            <div className=" flex flex-col gap-2">
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                About
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Careers
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Press
+              </Link>
+            </div>
           </div>
           <div className="space-y-2">
             <h4 className="font-bold">For Freelancers</h4>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Find Work
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Success Stories
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Find Work
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Success Stories
+              </Link>
+            </div>
           </div>
           <div className="space-y-2">
             <h4 className="font-bold">For Businesses</h4>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Post a Job
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              How It Works
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Post a Job
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                How It Works
+              </Link>
+            </div>
           </div>
           <div className="space-y-2">
             <h4 className="font-bold">Resources</h4>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Blog
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Help Center
-            </Link>
-            <Link
-              href="#"
-              className="hover:underline underline-offset-4"
-              prefetch={false}
-            >
-              Contact Us
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Blog
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Help Center
+              </Link>
+              <Link
+                href="#"
+                className="hover:underline underline-offset-4"
+                prefetch={false}
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
         <div className="container mt-8 flex items-center justify-between">
