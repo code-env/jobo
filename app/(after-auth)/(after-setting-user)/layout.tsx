@@ -17,7 +17,7 @@ const AfterAuthLayout = async ({ children }: { children: ReactNode }) => {
     <div className="min-h-screen flex max-w-7xl mx-auto w-full">
       <Sidebar user={user} />
       <div className="flex-1">
-        <Navbar />
+        <Navbar user={user} />
         <MobileNav user={user} />
         {/* <Mobileheadernav /> */}
         <main className="children">
