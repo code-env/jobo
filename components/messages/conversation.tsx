@@ -8,6 +8,7 @@ import { MessageCircle } from "lucide-react";
 import { someConversations } from "@/constants";
 import zenith from "@/public/zenith.jpg";
 import { cn } from "@/lib/utils";
+import LineText from "../shared/linetext";
 
 const Conversations = () => {
   const conversations = someConversations();
@@ -18,12 +19,12 @@ const Conversations = () => {
 
   return (
     <div>
-      <div>
+      <LineText>
         <p className="flex items-center justify-center gap-2 px-4">
           <MessageCircle className="w-4 h-4" />
           <span className="text-xs uppercase font-bold">conversations</span>
         </p>
-      </div>
+      </LineText>
 
       <div className="flex flex-col gap-1">
         {conversations.map((conversation, index) => {
