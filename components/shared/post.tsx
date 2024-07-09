@@ -7,7 +7,6 @@ import { ArrowBigUp, MessageSquareText } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { redirect, useRouter } from "next/navigation";
 
-
 const Post = ({
   params,
 }: {
@@ -91,13 +90,14 @@ const Post = ({
   };
 
   const createChannel = async (userId: string) => {
-   
-  
     try {
-      const { data } = await axios.post(`/api/conversation/create/${userId}/`, {});
-  
+      const { data } = await axios.post(
+        `/api/conversation/create/${userId}/`,
+        {}
+      );
+
       if (data) {
-        console.log('Channel creation success');
+        console.log("Channel creation success");
         router.push(`/inbox/${data.id}`);
       } else {
         console.log(userId, data);
@@ -111,17 +111,24 @@ const Post = ({
   if (!user) return;
 
   return (
-    <div className="flex gap-3 border-border border-b page hover:bg-black/5">
-      <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
-        <Image
-          fill
-          alt={`jobo user ${user?.username}`}
-          src={user?.profilePicture!}
-        />
-        
+    <div className="flex flex-col lg:flex lg:flex-row gap-3 border-border border-b page hover:bg-black/5 ">
+      <div className="flex  gap-2">
+        <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
+          <Image
+            fill
+            alt={`jobo user ${user.username}`}
+            src={user.profilePicture!}
+          />
+        </div>
+        <p className="flex flex-col lg:hidden">
+          {user?.username}{" "}
+          <span className="text-xs text-neutral-400">
+            {new Date(params.content.createdAt).toLocaleDateString()}
+          </span>
+        </p>
       </div>
-      <div className="flex flex-col w-full">
-        <p className="flex flex-col">
+      <div className="w-fit">
+        <p className="hidden flex-col lg:flex">
           {user?.username}{" "}
           <span className="text-xs text-neutral-400">
             {new Date(params.content.createdAt).toLocaleDateString()}
@@ -129,7 +136,7 @@ const Post = ({
         </p>
 
         <h2
-          className="font-semibold text-3xl"
+          className="font-semibold text-xl lg:text-3xl"
           onClick={() => router.push(`/scroll/${params.content.id}`)}
         >
           {params.content.title}
@@ -141,17 +148,8 @@ const Post = ({
         >
           {params.content.description}
         </p>
-        <div className="flex w-full relative ">
-          {isTrue && (
-            <div className="w-[200px] h-28 rounded-lg bg-black/5 absolute right-0 flex items-center justify-center">
-              <span className="font-semibold">
-                {params.content.images.length - 3} +
-              </span>
-            </div>
-          )}
+        <div className="flex relative ">
           {params.content.images?.map((image, index) => {
-           
-
             if (params.content.images.length > 3) {
               setIsTrue(true);
             }
@@ -159,7 +157,7 @@ const Post = ({
               <div
                 key={index}
                 className={cn(
-                  "h-28 flex-1 max-w-[200px] w-[200px] border rounded-lg relative"
+                  "h-28 flex-1 max-w-[200px] w-[200px] border rounded-lg relative overflow-hidden"
                 )}
               >
                 <Image
@@ -189,13 +187,14 @@ const Post = ({
               <ArrowBigUp className="w-4 h-4 " />{" "}
               <span className="text-sm">{params.content.likescount}</span>
             </button>
-        {params.isoutsourcer && ( 
-            
-            <button 
-      className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo" 
-      onClick={() => createChannel(params.content.userId)}>
-     Inbox
-    </button>)}
+            {params.isoutsourcer && (
+              <button
+                className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
+                onClick={() => createChannel(params.content.userId)}
+              >
+                Inbox
+              </button>
+            )}
           </div>
           {isCommment && (
             <form

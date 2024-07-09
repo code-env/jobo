@@ -44,9 +44,9 @@ const UserDash = () => {
   if (isError) return toast.error("something bad happened");
 
   return (
-    <div className="flex-col flex gap-4">
+    <div className="flex flex-col">
       {hacks?.map((hack) => (
-        <Post params={{content:hack!, isoutsourcer:false}} key={hack.id} />
+        <Post params={{ content: hack!, isoutsourcer: false }} key={hack.id} />
       ))}
     </div>
   );

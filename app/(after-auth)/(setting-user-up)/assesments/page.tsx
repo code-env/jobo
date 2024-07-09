@@ -8,6 +8,10 @@ const Page = async () => {
 
   if (!user) return;
 
+  if (user.skills.length === 0) return redirect("/skills");
+
+  if (user.type === "OUTSOURCER") return redirect("/scroll");
+
   if (!user.visible) return <AssesmentForm user={user} />;
 
   if (user.visible) return redirect("/scroll");
