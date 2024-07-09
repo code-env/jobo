@@ -40,6 +40,9 @@ export async function GET(req: Request) {
       include: {
         user: true,
       },
+      orderBy: {
+        likescount: "desc",
+      },
     });
 
     if (!getallshowcase) {

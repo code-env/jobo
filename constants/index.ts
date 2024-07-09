@@ -174,7 +174,7 @@ export const softwareDevelopmentMCQs = [
     answer: "MongoDB",
   },
   {
-    question: "5. Which of the following is a front-end JavaScript framework?",
+    question: "5. Which of the following is a front-end JavaScript library?",
     options: ["Django", "Flask", "React", "Spring"],
     answer: "React",
   },
