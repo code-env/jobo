@@ -25,21 +25,23 @@ const ScrollPost = async ({ params }: { params: { scrollId: string } }) => {
 
   return (
     <div className="children">
-      <div className="page border-b border-border flex gap-3">
-        <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
-          <Image
-            fill
-            alt={`jobo user ${post?.user.username}`}
-            src={post.user.profilePicture!}
-          />
-        </div>
-        <div>
+      <div className="page border-b border-border flex flex-col gap-3">
+        <div className="flex gap-2">
+          <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
+            <Image
+              fill
+              alt={`jobo user ${post?.user.username}`}
+              src={post.user.profilePicture!}
+            />
+          </div>
           <p className="flex flex-col">
             {post.user?.username}{" "}
             <span className="text-xs text-neutral-400">
               {new Date(post.createdAt).toLocaleDateString()}
             </span>
           </p>
+        </div>
+        <div>
           <h2 className="font-semibold text-3xl">{post.title}</h2>
 
           <p className="mt-2 mb-2">{post.description}</p>
@@ -68,11 +70,9 @@ const ScrollPost = async ({ params }: { params: { scrollId: string } }) => {
       </div>
       <SinglePost
         Comments={post.Comments}
-        description={post.description}
         images={post.images}
         id={post.id}
         likeCount={post.likescount}
-        title={post.title}
         user={post.user}
       />
     </div>

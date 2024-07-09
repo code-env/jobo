@@ -9,17 +9,14 @@ import React, { FormEvent, useState } from "react";
 
 export type Post = {
   id: string;
-  title: string;
-  description: string;
   Comments: Comments[];
   user: User;
   likeCount: number;
   images: string[];
 };
 
-const SinglePost = ({ id, title, description, Comments, user }: Post) => {
+const SinglePost = ({ id, Comments, user }: Post) => {
   const [text, setText] = useState("");
-  const [likes, setLikes] = useState<Likes[] | null>(null);
   const [comments, setComments] = useState<Comments[] | null>(null);
   const [isLoading, setisLoading] = useState(false);
 
@@ -32,11 +29,11 @@ const SinglePost = ({ id, title, description, Comments, user }: Post) => {
         message: text,
       });
 
-      setComments([...(comments as Comments[]), data]);
-
       setText("");
 
-      revalidatePath("/");
+      //   setComments([...comments , data]);
+
+      revalidatePath("/scroll");
     } catch (error: any) {
       console.log(error.message);
     } finally {
