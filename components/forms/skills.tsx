@@ -34,7 +34,8 @@ const UserSkills = () => {
 
       const data: User = await res.data;
 
-      if (data.type === "USER") router.push("/scroll");
+      if (data.type === "USER" && data.visible === false)
+        router.push("/assesments");
     } catch (error: any) {
       console.log(error.message);
     } finally {

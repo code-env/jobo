@@ -75,7 +75,7 @@
   }
 
   .custom-button {
-    @apply rounded w-fit outline-none focus:outline-none px-3 py-1 bg-background text-white hover:bg-background/90 slowmo opacity-100 text-xs cursor-pointer;
+    @apply rounded w-fit outline-none focus:outline-none px-3 py-1 bg-primary text-white hover:bg-primary/90 slowmo opacity-100 text-xs cursor-pointer;
   }
 
   .cropper-container {
