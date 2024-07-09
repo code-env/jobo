@@ -32,9 +32,6 @@ export async function POST(
     const showcaseData = await db.showCasePost.findUnique({
       where: {
         id: params.postId,
-
-        //damn man tu veut me tuer comme ca?
-        // userId: userdata.id, d
       },
     });
 
