@@ -23,20 +23,12 @@ const Inbox = async () => {
   if (!userdata) return;
 
   if (userdata)
-<<<<<<< HEAD
 
   return (
     <div>
       <TextMorph params={{ conversationId: user.id, Userdata:userdata }} />
     </div>
-  );
-=======
-    return (
-      <div className="relative">
-        <TextMorph params={{ conversationId: user.id }} />
-      </div>
-    );
->>>>>>> 67a6a2c7806c2027460f18f8a0e74b4a3e1238ed
+  ); 
 };
 
 export default Inbox;
