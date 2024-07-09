@@ -38,8 +38,8 @@ export default function TextMorph({
 
   return (
 
-    <div className="flex h-[300px] flex-col items-end justify-end pb-4">
-      <PaymentForm user= {params.Userdata}/>
+    <div className="fixed bottom-0 my-0 w-full flex  h-[300px] flex-col items-center justify-end pb-4">
+      {/* <PaymentForm user= {params.Userdata}/> */}
 
     <div className="flex children relative flex-col items-end justify-end">
 
