@@ -99,6 +99,7 @@ const Post = ({
           alt={`jobo user ${user?.username}`}
           src={user?.profilePicture!}
         />
+        
       </div>
       <div className="flex flex-col w-full">
         <p className="flex flex-col">
@@ -169,12 +170,13 @@ const Post = ({
               <ArrowBigUp className="w-4 h-4 " />{" "}
               <span className="text-sm">{params.content.likescount}</span>
             </button>
-            <button
-              className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
-              onClick={() => console.log(1)}
-            >
-              Inbox
-            </button>
+        {params.isoutsourcer && ( 
+            
+            <button 
+      className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo" 
+      onClick={() => console.log(1)}>
+     Inbox
+    </button>)}
           </div>
           {isCommment && (
             <form

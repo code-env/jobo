@@ -18,19 +18,18 @@ export async function GET(req: Request) {
     });
 
     if (!userdata) {
+      console.log("No user found")
       return new NextResponse("No user found", { status: 404 });
     }
 
     const showcaseData = await db.showCasePost.findMany({
       where: {
         userId: userdata.id,
-      },
-      include: {
-        user: true,
-      },
+    }
     });
 
     if (!showcaseData) {
+      console.log("No showcase found")
       return new NextResponse("No showcase found", { status: 404 });
     }
 
