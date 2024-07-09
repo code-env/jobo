@@ -6,9 +6,10 @@ import PostSkeleton from "../skeletons/hacks-post";
 import { toast } from "sonner";
 import Post from "../shared/post";
 import axios from "axios";
-import { ShowCasePost } from "@prisma/client";
+import { ShowCasePost, User } from "@prisma/client";
+import Show from "../shared/show";
 
-const UserDash = () => {
+const UserDash = ({ user }: { user: User }) => {
   async function getAllHacks() {
     try {
       const res = await axios.get("/api/user/showcase");
@@ -45,6 +46,7 @@ const UserDash = () => {
 
   return (
     <div className="flex flex-col">
+      <Show user={user} />
       {hacks?.map((hack) => (
         <Post params={{ content: hack!, isoutsourcer: false }} key={hack.id} />
       ))}

@@ -14,7 +14,7 @@ const Dasboard = async () => {
 
   if (!user) return;
 
-  if (user.type === "USER" && user.visible) return <UserDash />;
+  if (user.type === "USER" && user.visible) return <UserDash user={user} />;
 
   if (user.type === "USER" && !user.visible) return redirect("/assesments");
 
