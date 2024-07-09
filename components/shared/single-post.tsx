@@ -6,6 +6,7 @@ import axios from "axios";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
+import Comment from "./comment";
 
 export type Post = {
   id: string;
@@ -17,7 +18,6 @@ export type Post = {
 
 const SinglePost = ({ id, Comments, user }: Post) => {
   const [text, setText] = useState("");
-  const [comments, setComments] = useState<Comments[] | null>(null);
   const [isLoading, setisLoading] = useState(false);
 
   const handleSubmitComments = async (event: FormEvent) => {
@@ -30,8 +30,6 @@ const SinglePost = ({ id, Comments, user }: Post) => {
       });
 
       setText("");
-
-      //   setComments([...comments , data]);
 
       revalidatePath("/scroll");
     } catch (error: any) {
@@ -72,19 +70,7 @@ const SinglePost = ({ id, Comments, user }: Post) => {
       </div>
       <div className="page border-border border-b">
         {Comments.map((comment) => (
-          <div className="flex gap-3 py-2" key={comment.id}>
-            <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
-              <Image
-                fill
-                alt={`jobo user ${user?.username}`}
-                src={user?.profilePicture!}
-              />
-            </div>
-            <div className="flex flex-col w-full">
-              <p className="flex flex-col">{user?.username}</p>
-              <p className="">{comment.message}</p>
-            </div>
-          </div>
+          <Comment comment={comment} key={comment.id} />
         ))}
       </div>
     </div>
