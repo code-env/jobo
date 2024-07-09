@@ -36,12 +36,12 @@ export const sidebarRoutes = () => {
   const routes = useMemo(
     () => [
       {
-        name: "scroll",
+        name: "shocase",
         path: "/scroll",
         icon: Tent,
       },
       {
-        name: "showcase",
+        name: "my-posts",
         path: "/showcase",
         icon: Tornado,
       },

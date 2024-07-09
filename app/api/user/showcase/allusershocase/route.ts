@@ -25,10 +25,7 @@ export async function GET(req: Request) {
     const showcaseData = await db.showCasePost.findMany({
       where: {
         userId: userdata.id,
-      },
-      include: {
-        user: true,
-      },
+    }
     });
 
     if (!showcaseData) {
