@@ -5,7 +5,8 @@ import Image from "next/image";
 import React, { FormEvent, useEffect, useState } from "react";
 import { ArrowBigUp, MessageSquareText } from "lucide-react";
 import { revalidatePath } from "next/cache";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+
 
 const Post = ({
   params,
@@ -89,6 +90,24 @@ const Post = ({
     }
   };
 
+  const createChannel = async (userId: string) => {
+   
+  
+    try {
+      const { data } = await axios.post(`/api/conversation/create/${userId}/`, {});
+  
+      if (data) {
+        console.log('Channel creation success');
+        router.push(`/inbox/${data.id}`);
+      } else {
+        console.log(userId, data);
+        alert("Sorry, something happened. Please try again later.");
+      }
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+
   if (!user) return;
 
   return (
@@ -131,7 +150,7 @@ const Post = ({
             </div>
           )}
           {params.content.images?.map((image, index) => {
-            //some code here
+           
 
             if (params.content.images.length > 3) {
               setIsTrue(true);
@@ -174,7 +193,7 @@ const Post = ({
             
             <button 
       className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo" 
-      onClick={() => console.log(1)}>
+      onClick={() => createChannel(params.content.userId)}>
      Inbox
     </button>)}
           </div>
