@@ -2,7 +2,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { User as UserProfile } from "@prisma/client";
 
-import Image from "next/image";
 import axios from "axios";
 import payment from "@/lib/pay";
 
@@ -43,7 +42,7 @@ interface CheckpaymentStatus {
 }
 
 const PaymentForm = ({user}:{user:UserProfile}) => {
-  const { username, email, clerkId } = user ;
+  const { email, clerkId } = user;
   const [paymentData, setPaymentData] = useState<PaymentData>({
     amount: 5000,
     email,
@@ -69,7 +68,7 @@ const PaymentForm = ({user}:{user:UserProfile}) => {
 
       if(newChecktransactionstatus.status !== "success") {
         console.log("Payment not successful");
-        return;
+        console.log(newChecktransactionstatus);
       }
 
       setTimeout(() => {
@@ -99,21 +98,6 @@ const PaymentForm = ({user}:{user:UserProfile}) => {
   return (
     <div className="flex justify-center items-center h-screen">
       <form className="space-y-4" onSubmit={initiatePayment}>
-        <div>
-          <label htmlFor="amount" className="font-medium flex justify-center">
-            Amount to Pay:{" "}
-            <strong className="text-red-500 px-[10px]">5,000 FCFA</strong>
-          </label>
-          <div className="pt-[40px]">
-            <Image
-              src="/mtn-orange.png"
-              alt="mtn/orange image here"
-              height={400}
-              width={400}
-            />
-          </div>
-        </div>
-
         <div className="flex w-full justify-center">
           <button type="submit" className="custom-button">
             Initiate Payment
