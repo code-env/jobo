@@ -3,6 +3,7 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
+import ConnectUpdates from "@/components/modals/payment-update";
 
 const satoshi = localFont({
   src: [
@@ -54,7 +55,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={satoshi.className}>
-          <main className="min-h-screen ">{children}</main>
+          <main className="min-h-screen ">   
+            {children}
+          </main>
         </body>
       </html>
     </ClerkProvider>

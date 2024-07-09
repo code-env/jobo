@@ -7,7 +7,7 @@ const headers = {
   apikey:  process.env.apikey
 };
 
-const payment = {
+const payment = {  
   initiatePay(data: { amount: number }) {
     return new Promise(async (resolve) => {
       try {

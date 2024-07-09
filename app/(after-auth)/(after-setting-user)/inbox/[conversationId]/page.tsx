@@ -26,7 +26,7 @@ const Inbox = async () => {
 
   return (
     <div>
-      <TextMorph params={{ conversationId: user.id }} />
+      <TextMorph params={{ conversationId: user.id, Userdata:userdata }} />
     </div>
   );
 };
