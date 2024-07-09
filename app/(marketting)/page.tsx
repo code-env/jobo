@@ -12,11 +12,11 @@ export default function Component() {
         <Logo href="#" />
         <nav className="hidden lg:flex gap-4">
           <Link
-            href="#"
+            href="sign-up"
             className="hover:underline underline-offset-4"
             prefetch={false}
           >
-            Find Work
+            Get started
           </Link>
           <Link
             href="#"
@@ -31,6 +31,13 @@ export default function Component() {
             prefetch={false}
           >
             About
+          </Link>
+          <Link
+            href="/coming-soon"
+            className="hover:underline underline-offset-4"
+            prefetch={false}
+          >
+            Comming Soon
           </Link>
           <Link
             href="#"
@@ -53,11 +60,11 @@ export default function Component() {
           <SheetContent side="right">
             <div className="grid gap-4 p-4">
               <Link
-                href="#"
+                href="/sign-up"
                 className="hover:underline underline-offset-4"
                 prefetch={false}
               >
-                Find Work
+                Get Started
               </Link>
               <Link
                 href="#"
