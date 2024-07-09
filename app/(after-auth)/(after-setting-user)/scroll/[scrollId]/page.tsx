@@ -73,7 +73,6 @@ const ScrollPost = async ({ params }: { params: { scrollId: string } }) => {
         images={post.images}
         id={post.id}
         likeCount={post.likescount}
-        user={post.user}
       />
     </div>
   );

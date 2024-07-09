@@ -11,12 +11,12 @@ import Comment from "./comment";
 export type Post = {
   id: string;
   Comments: Comments[];
-  user: User;
+
   likeCount: number;
   images: string[];
 };
 
-const SinglePost = ({ id, Comments, user }: Post) => {
+const SinglePost = ({ id, Comments }: Post) => {
   const [text, setText] = useState("");
   const [isLoading, setisLoading] = useState(false);
 
