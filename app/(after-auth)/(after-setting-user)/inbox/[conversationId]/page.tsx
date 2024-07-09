@@ -23,11 +23,12 @@ const Inbox = async () => {
   if (!userdata) return;
 
   if (userdata)
-    return (
-      <div className="relative">
-        <TextMorph params={{ conversationId: user.id }} />
-      </div>
-    );
+
+  return (
+    <div>
+      <TextMorph params={{ conversationId: user.id, Userdata:userdata }} />
+    </div>
+  ); 
 };
 
 export default Inbox;
