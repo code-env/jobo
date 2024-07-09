@@ -1,5 +1,4 @@
 "use client";
-
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import PostSkeleton from "@/components/skeletons/hacks-post";
@@ -9,9 +8,9 @@ import axios from "axios";
 import { ShowCasePost } from "@prisma/client";
 
 const UserDash = () => {
-  async function getAllHacks() {
+  async function getAllHacksperUser() {
     try {
-      const res = await axios.get("/api/user/shocase/allusershocase");
+      const res = await axios.get("/api/user/showcase/allusershocase");
 
       const data: ShowCasePost[] = await res.data;
 
@@ -23,11 +22,11 @@ const UserDash = () => {
 
   const {
     isLoading,
-    data: hacks,
+    data: posthacks,
     isError,
   } = useQuery({
-    queryKey: ["hacks"],
-    queryFn: getAllHacks,
+    queryKey: ["posthacks"],
+    queryFn: getAllHacksperUser,
   });
 
   if (isLoading)
@@ -39,13 +38,13 @@ const UserDash = () => {
       </div>
     );
 
-  if (hacks?.length === 0) return <div className="">No hacks!</div>;
+  if (posthacks?.length === 0) return <div className="">No hacks!</div>;
 
   if (isError) return toast.error("something bad happened");
 
   return (
     <div className="flex-col flex gap-4">
-      {hacks?.map((hack) => (
+      {posthacks?.map((hack) => (
         <Post params={{content:hack!, isoutsourcer:false}} key={hack.id} />
       ))}
     </div>
