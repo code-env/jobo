@@ -5,8 +5,13 @@ import Image from "next/image";
 import React, { FormEvent, useEffect, useState } from "react";
 import { ArrowBigUp, MessageSquareText } from "lucide-react";
 import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
-const Post = ({ params }: { params: {content:ShowCasePost,isoutsourcer:Boolean}}) => {
+const Post = ({
+  params,
+}: {
+  params: { content: ShowCasePost; isoutsourcer: Boolean };
+}) => {
   const [text, setText] = useState("");
   const [likes, setLikes] = useState<Likes[] | null>(null);
   const [comments, setComments] = useState<Comments[] | null>(null);
@@ -14,6 +19,9 @@ const Post = ({ params }: { params: {content:ShowCasePost,isoutsourcer:Boolean}}
   const [user, setUser] = useState<User | null>(null);
   const [isCommment, setIsComment] = useState(false);
   const [isTrue, setIsTrue] = useState(false);
+
+  const router = useRouter();
+
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(`/api/user/${params.content.userId}`);
@@ -84,7 +92,7 @@ const Post = ({ params }: { params: {content:ShowCasePost,isoutsourcer:Boolean}}
   if (!user) return;
 
   return (
-    <div className="flex gap-3 border-border border-b page">
+    <div className="flex gap-3 border-border border-b page hover:bg-black/5">
       <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
         <Image
           fill
@@ -101,11 +109,19 @@ const Post = ({ params }: { params: {content:ShowCasePost,isoutsourcer:Boolean}}
           </span>
         </p>
 
-        <h2 className="font-semibold text-3xl">{params.content.title}</h2>
+        <h2
+          className="font-semibold text-3xl"
+          onClick={() => router.push(`/scroll/${params.content.id}`)}
+        >
+          {params.content.title}
+        </h2>
 
-
-        <p className="mt-2 line-clamp-3 mb-2">{params.content.description}</p>
-
+        <p
+          className="mt-2 line-clamp-3 mb-2"
+          onClick={() => router.push(`/scroll/${params.content.id}`)}
+        >
+          {params.content.description}
+        </p>
         <div className="flex w-full relative ">
           {isTrue && (
             <div className="w-[200px] h-28 rounded-lg bg-black/5 absolute right-0 flex items-center justify-center">
@@ -161,7 +177,6 @@ const Post = ({ params }: { params: {content:ShowCasePost,isoutsourcer:Boolean}}
       onClick={() => console.log(1)}>
      Inbox
     </button>)}
-
           </div>
           {isCommment && (
             <form
