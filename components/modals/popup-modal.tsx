@@ -15,13 +15,13 @@ export function DialogDemo() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline" className="bg-green-300 text-white w-fill">Buy</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Fapshi Payment</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
+            Please note that this moneu is only refundable upto 24 hours after payment
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

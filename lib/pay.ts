@@ -1,10 +1,11 @@
+require('dotenv').config();
 import axios from "axios";
 
 const baseUrl = "https://live.fapshi.com";
 
 const headers = {
-  apiuser:process.env.apiuser,
-  apikey:  process.env.apikey
+  apiuser:"6f38694a-d6e8-4758-93a7-4205a302871c",
+  apikey:  "FAK_8e3379c597c3e0ec5167b59325c6dfad"
 };
 
 const payment = {  
