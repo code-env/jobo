@@ -46,7 +46,7 @@ const UserDash = () => {
   return (
     <div className="flex-col flex gap-4">
       {hacks?.map((hack) => (
-        <Post content={hack!} key={hack.id} />
+        <Post params={{content:hack!, isoutsourcer:false}} key={hack.id} />
       ))}
     </div>
   );
