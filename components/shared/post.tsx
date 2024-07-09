@@ -128,7 +128,7 @@ const Post = ({
         </p>
 
         <h2
-          className="font-semibold text-3xl"
+          className="font-semibold text-xl lg:text-3xl"
           onClick={() => router.push(`/scroll/${params.content.id}`)}
         >
           {params.content.title}
