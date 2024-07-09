@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { FormEvent, useEffect, useState } from "react";
 import { ArrowBigUp, MessageSquareText } from "lucide-react";
 import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 const Post = ({ content }: { content: ShowCasePost }) => {
   const [text, setText] = useState("");
@@ -14,6 +15,9 @@ const Post = ({ content }: { content: ShowCasePost }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isCommment, setIsComment] = useState(false);
   const [isTrue, setIsTrue] = useState(false);
+
+  const router = useRouter();
+
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(`/api/user/${content.userId}`);
@@ -84,7 +88,7 @@ const Post = ({ content }: { content: ShowCasePost }) => {
   if (!user) return;
 
   return (
-    <div className="flex gap-3 border-border border-b page">
+    <div className="flex gap-3 border-border border-b page hover:bg-black/5">
       <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
         <Image
           fill
@@ -100,9 +104,19 @@ const Post = ({ content }: { content: ShowCasePost }) => {
           </span>
         </p>
 
-        <h2 className="font-semibold text-3xl">{content.title}</h2>
+        <h2
+          className="font-semibold text-3xl"
+          onClick={() => router.push(`/scroll/${content.id}`)}
+        >
+          {content.title}
+        </h2>
 
-        <p className="mt-2 line-clamp-3 mb-2">{content.description}</p>
+        <p
+          className="mt-2 line-clamp-3 mb-2"
+          onClick={() => router.push(`/scroll/${content.id}`)}
+        >
+          {content.description}
+        </p>
 
         <div className="flex w-full relative ">
           {isTrue && (
