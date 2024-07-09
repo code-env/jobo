@@ -18,6 +18,7 @@ export async function GET(req: Request) {
     });
 
     if (!userdata) {
+      console.log("No user found")
       return new NextResponse("No user found", { status: 404 });
     }
 
@@ -31,6 +32,7 @@ export async function GET(req: Request) {
     });
 
     if (!showcaseData) {
+      console.log("No showcase found")
       return new NextResponse("No showcase found", { status: 404 });
     }
 
