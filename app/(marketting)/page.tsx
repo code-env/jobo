@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -96,8 +96,16 @@ export default function Component() {
               Jobo empowers cameroonians through innovative software solution
               tailored ror their unique needs.
             </p>
-            <div>
-              <Button size="lg">Find Work</Button>
+            <div className="flex items-center gap-3 justify-center">
+              <Link className={buttonVariants({ size: "lg" })} href="/sign-up">
+                Find Work
+              </Link>
+              <Link
+                className={buttonVariants({ size: "lg", variant: "ghost" })}
+                href="/sign-up"
+              >
+                Find talent
+              </Link>
             </div>
           </div>
         </section>
