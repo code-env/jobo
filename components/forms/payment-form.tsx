@@ -31,13 +31,19 @@ interface CheckpaymentStatus {
   amount: number;
   revenue: number;
   payerName: string;
+  email: string;
   redirectUrl: string;
   externalId: string;
   userId: string;
+  webhook: string;
+  financialTransId:string;
+  dateInitiated: string;
+  dateconfirmed: string;
+
 }
 
-const PaymentForm = ({ user }: { user: UserProfile }) => {
-  const { username, email, clerkId } = user;
+const PaymentForm = ({user}:{user:UserProfile}) => {
+  const { username, email, clerkId } = user ;
   const [paymentData, setPaymentData] = useState<PaymentData>({
     amount: 5000,
     email,
@@ -58,6 +64,13 @@ const PaymentForm = ({ user }: { user: UserProfile }) => {
       const checktransactionstatus = await payment.paymentStatus(
         newResposnse.transId
       );
+
+      const newChecktransactionstatus = checktransactionstatus as CheckpaymentStatus;
+
+      if(newChecktransactionstatus.status !== "success") {
+        console.log("Payment not successful");
+        return;
+      }
 
       setTimeout(() => {
         window.location.href = newResposnse.link;
@@ -81,7 +94,7 @@ const PaymentForm = ({ user }: { user: UserProfile }) => {
     }
   };
 
-  if (!user) return null;
+  // if (!User) return null;
 
   return (
     <div className="flex justify-center items-center h-screen">

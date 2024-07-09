@@ -7,7 +7,11 @@ import { ArrowBigUp, MessageSquareText } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 
-const Post = ({ content }: { content: ShowCasePost }) => {
+const Post = ({
+  params,
+}: {
+  params: { content: ShowCasePost; isoutsourcer: Boolean };
+}) => {
   const [text, setText] = useState("");
   const [likes, setLikes] = useState<Likes[] | null>(null);
   const [comments, setComments] = useState<Comments[] | null>(null);
@@ -20,7 +24,7 @@ const Post = ({ content }: { content: ShowCasePost }) => {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get(`/api/user/${content.userId}`);
+      const { data } = await axios.get(`/api/user/${params.content.userId}`);
 
       setUser(data);
     };
@@ -31,7 +35,7 @@ const Post = ({ content }: { content: ShowCasePost }) => {
   useEffect(() => {
     const comments = async () => {
       const { data } = await axios.get(
-        `/api/user/showcase/${content.id}/comments`
+        `/api/user/showcase/${params.content.id}/comments`
       );
 
       setComments(data);
@@ -46,7 +50,7 @@ const Post = ({ content }: { content: ShowCasePost }) => {
       setisLoading(true);
 
       const { data } = await axios.post(
-        `/api/user/showcase/${content.id}/comments`,
+        `/api/user/showcase/${params.content.id}/comments`,
         { message: text }
       );
 
@@ -70,7 +74,7 @@ const Post = ({ content }: { content: ShowCasePost }) => {
       setisLoading(true);
 
       const { data } = await axios.post(
-        `/api/user/showcase/${content.id}/likes`
+        `/api/user/showcase/${params.content.id}/likes`
       );
 
       setLikes([...(likes as Likes[]), data]);
@@ -100,36 +104,35 @@ const Post = ({ content }: { content: ShowCasePost }) => {
         <p className="flex flex-col">
           {user?.username}{" "}
           <span className="text-xs text-neutral-400">
-            {new Date(content.createdAt).toLocaleDateString()}
+            {new Date(params.content.createdAt).toLocaleDateString()}
           </span>
         </p>
 
         <h2
           className="font-semibold text-3xl"
-          onClick={() => router.push(`/scroll/${content.id}`)}
+          onClick={() => router.push(`/scroll/${params.content.id}`)}
         >
-          {content.title}
+          {params.content.title}
         </h2>
 
         <p
           className="mt-2 line-clamp-3 mb-2"
-          onClick={() => router.push(`/scroll/${content.id}`)}
+          onClick={() => router.push(`/scroll/${params.content.id}`)}
         >
-          {content.description}
+          {params.content.description}
         </p>
-
         <div className="flex w-full relative ">
           {isTrue && (
             <div className="w-[200px] h-28 rounded-lg bg-black/5 absolute right-0 flex items-center justify-center">
               <span className="font-semibold">
-                {content.images.length - 3} +
+                {params.content.images.length - 3} +
               </span>
             </div>
           )}
-          {content.images?.map((image, index) => {
+          {params.content.images?.map((image, index) => {
             //some code here
 
-            if (content.images.length > 3) {
+            if (params.content.images.length > 3) {
               setIsTrue(true);
             }
             return (
@@ -164,7 +167,13 @@ const Post = ({ content }: { content: ShowCasePost }) => {
               className="bg-black/5 rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
             >
               <ArrowBigUp className="w-4 h-4 " />{" "}
-              <span className="text-sm">{content.likescount}</span>
+              <span className="text-sm">{params.content.likescount}</span>
+            </button>
+            <button
+              className="bg-green-500 text-white rounded-full p-1 px-2 flex items-center gap-1 text-black/50 hover:bg-black/20 slowmo"
+              onClick={() => console.log(1)}
+            >
+              Inbox
             </button>
           </div>
           {isCommment && (

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import React from "react";
 import TextMorph from "@/components/forms/text-morph";
 import { currentUser } from "@clerk/nextjs/server";
+import { db } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Inbox",
@@ -10,13 +11,22 @@ export const metadata: Metadata = {
 const Inbox = async () => {
   const user = await currentUser();
 
+
   if (!user) {
     return null;
   }
 
+  const userdata = await db.user.findUnique({
+    where: {
+      clerkId: user.id,
+    },
+  });
+
+  if (!userdata) return;
+
   return (
     <div>
-      <TextMorph params={{ conversationId: user.id }} />
+      <TextMorph params={{ conversationId: user.id, Userdata:userdata }} />
     </div>
   );
 };

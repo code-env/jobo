@@ -1,8 +1,11 @@
 "use client";
 
-import { PlusIcon } from "lucide-react";
+import { PlusIcon, User } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import PaymentForm from "./payment-form";
+import { User as UserProfile } from "@prisma/client";
+
 import { cn } from "@/lib/utils";
 
 const transitionDebug = {
@@ -11,9 +14,9 @@ const transitionDebug = {
 };
 
 export default function TextMorph({
-  params,
+  params
 }: {
-  params: { conversationId: string };
+  params: { conversationId: string, Userdata: UserProfile};
 }) {
   const [messages, setMessages] = useState<
     {
@@ -34,7 +37,12 @@ export default function TextMorph({
   };
 
   return (
+
+    <div className="fixed bottom-0 my-0 w-full flex  h-[300px] flex-col items-center justify-end pb-4">
+      {/* <PaymentForm user= {params.Userdata}/> */}
+
     <div className="flex children relative flex-col items-end justify-end">
+
       <AnimatePresence mode="wait">
         {messages.map((message) => (
           <motion.div
@@ -85,6 +93,7 @@ export default function TextMorph({
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }
