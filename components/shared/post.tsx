@@ -111,16 +111,24 @@ const Post = ({
   if (!user) return;
 
   return (
-    <div className="flex gap-3 border-border border-b page hover:bg-black/5 ">
-      <div className="w-10 h-10 min-w-10 max-w-10 relative rounded-full overflow-hidden">
-        <Image
-          fill
-          alt={`jobo user ${user?.username}`}
-          src={user?.profilePicture!}
-        />
+    <div className="flex flex-col lg:flex lg:flex-row gap-3 border-border border-b page hover:bg-black/5 ">
+      <div className="flex  gap-2">
+        <div className="w-10 h-10 min-w-10 relative rounded-full overflow-hidden">
+          <Image
+            fill
+            alt={`jobo user ${user.username}`}
+            src={user.profilePicture!}
+          />
+        </div>
+        <p className="flex flex-col lg:hidden">
+          {user?.username}{" "}
+          <span className="text-xs text-neutral-400">
+            {new Date(params.content.createdAt).toLocaleDateString()}
+          </span>
+        </p>
       </div>
       <div className="w-fit">
-        <p className="flex flex-col">
+        <p className="hidden flex-col lg:flex">
           {user?.username}{" "}
           <span className="text-xs text-neutral-400">
             {new Date(params.content.createdAt).toLocaleDateString()}
