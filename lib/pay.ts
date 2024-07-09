@@ -77,7 +77,7 @@ const payment = {
         resolve(e.response.data);
       }
     });
-  },
+  },                                                                                                                                                                            
 };
 
 function error(message: string, statusCode: number) {
