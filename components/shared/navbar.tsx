@@ -34,6 +34,10 @@ const Navbar = ({ user }: { user: User }) => {
         {pathname.split("/")[1]}
       </p>
 
+      <div className="block lg:hidden">
+        <CreateNewHack />
+      </div>
+
       {/* {areconnects && <p>Oops. All 10 free Posts Exhasuted.< DialogDemo/> more connects</p>} */}
       <div className="block lg:hidden">
         <AlertNav user={user} navbar />
